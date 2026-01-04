@@ -5,21 +5,19 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
-# find dependencies
+# Find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 
-# TODO: Add the executable target named 'hello_node'
-# 1. Add executable using src/hello_node.cpp
+# Add the executable
 add_executable(hello_node src/hello_node.cpp)
-# 2. Add dependencies (ament_target_dependencies) for rclcpp
-ament_target_dependencies(hello_node rclcpp)
-# 3. Install the target to the DESTINATION lib/${PROJECT_NAME}
-install(TARGETS hello_node DESTINATION lib/&{PROJECT_NAME})
 
-if(BUILD_TESTING)
-  find_package(ament_lint_auto REQUIRED)
-  ament_lint_auto_find_test_dependencies()
-endif()
+# Link dependencies
+ament_target_dependencies(hello_node rclcpp)
+
+# Install the executable
+install(TARGETS
+  hello_node
+  DESTINATION lib/${PROJECT_NAME})
 
 ament_package()

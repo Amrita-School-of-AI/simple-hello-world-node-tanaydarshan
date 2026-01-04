@@ -21,7 +21,7 @@ public:
   HelloNode()
   : Node("hello_world_node")
   {
-    timer_=this->create_wall_timer(1000ms,std::bind(&Hello_Node::timer_callback,this));
+    timer_=this->create_wall_timer(1000ms,std::bind(&HelloNode::timer_callback,this));
   }
 
 private:
